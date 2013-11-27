@@ -6,15 +6,21 @@ A simple key/value storage built on top of YAML::Store with an ActiveRecord like
 
 Add this line to your application's Gemfile:
 
-    gem 'active_yaml'
+```
+gem 'active_yaml'
+```
 
 And then execute:
 
-    $ bundle
+```
+$ bundle
+```
 
 Or install it yourself as:
 
-    $ gem install active_yaml
+```
+$ gem install active_yaml
+```
 
 ## Usage
 
@@ -22,33 +28,32 @@ For now, it uses a "db" directory to store the YAML files, so create it first.
 
 Then just include it in your model classes
 
-    ```ruby
-    class Post
-      include ActiveYaml
-
-      attr_accessor :title, :body
-    end
-    ```
+```ruby
+class Post
+  include ActiveYaml
+  attr_accessor :title, :body
+end
+```
 
 And use it like you use ActiveRecord
 
-    ```ruby
-    p = Post.new
-    p.title = "Great post!"
-    p.body = "Lorem ipsum..."
-    p.save
+```ruby
+p = Post.new
+p.title = "Great post!"
+p.body = "Lorem ipsum..."
+p.save
 
-    Post.all # => [#<Post:0x895bb38 @title="Great post!", @body="Lorem ipsum...", @id=1>]
+Post.all # => [#<Post:0x895bb38 @title="Great post!", @body="Lorem ipsum...", @id=1>]
 
-    Post.find(1) # => #<Post:0x954bc69 @title="Great post!", @body="Lorem ipsum...", @id=1>
-    ```
+Post.find(1) # => #<Post:0x954bc69 @title="Great post!", @body="Lorem ipsum...", @id=1>
+```
 
 You can use "where" to make "queries" on more than one attribute:
 
-    ```ruby
-    Post.where(author: 'Brunno', visibility: 'public')
-    # => [#<Post:0x895bb38 @author="Brunno", @visibility="public", @id=1>, #<Post:0x457pa36 @author="Brunno", @visibility="public", @id=2>]
-    ```
+```ruby
+Post.where(author: 'Brunno', visibility: 'public')
+# => [#<Post:0x895bb38 @author="Brunno", @visibility="public", @id=1>, #<Post:0x457pa36 @author="Brunno", @visibility="public", @id=2>]
+```
 
 ## Why?
 
